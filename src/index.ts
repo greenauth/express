@@ -1,30 +1,31 @@
-import {Application, Request} from 'express';
+import {Router as newRouter, Router} from 'express';
+import routes from './routes';
 
-declare module 'express-serve-static-core' {
-  // eslint-disable-next-line no-unused-vars
-  interface Request {
-    auth: any;
-  }
-}
+export {default as isProtected} from './protected';
 
 /**
  * Server middleware.
  */
 export default class GreenAuthServer {
   // Props
-  private _app: Application;
+  static _secret: string;
 
   /**
    * Build an instance of `GreenAuthServer`.
-   * @param {any} config The second number.
+   * @param {{ app: Application }} config The second number.
    */
-  constructor(config: { app: Application }) {
-    this._app = config.app;
-    this._app.get('auth/me', (req: Request, res) => {
-      if (!req.auth) return res.sendStatus(401);
-      return res.json({});
-    });
+  constructor(config: { secret: string }) {
+    GreenAuthServer._secret = config.secret;
   }
-
   // Methods
+
+  /**
+   * Initialize the middleware
+   * @return {Router} return a router middleware.
+   */
+  initialize = (): Router => {
+    const router = newRouter();
+    router.use(routes);
+    return routes;
+  };
 }
