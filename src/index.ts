@@ -3,7 +3,7 @@ import {Application, Request} from 'express';
 declare module 'express-serve-static-core' {
   // eslint-disable-next-line no-unused-vars
   interface Request {
-    auth: any;
+    // auth: any;
   }
 }
 
