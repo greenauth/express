@@ -15,5 +15,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "editor.tabSize": 2,
+    "prettier.singleQuote": true
 }
