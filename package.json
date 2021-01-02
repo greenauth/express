@@ -7,7 +7,9 @@
   "scripts": {
     "build": "rimraf lib && tsc -p tsconfig.build.json",
     "release": "semantic-release",
-    "lint": "eslint src/**",
+    "check-types": "tsc --noemit",
+    "eslint": "eslint src/**",
+    "lint": "npm run eslint && npm run check-types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
