@@ -1,7 +1,7 @@
 import request from 'supertest';
 import express, {Application} from 'express';
 import jwt from 'jsonwebtoken';
-import GreenAuthServer from '../src/index';
+import GreenAuthServer, {IConfig} from '../src/index';
 
 describe('Verify that the `auth/me` path responds correctly', () => {
   let app: Application;
@@ -9,7 +9,16 @@ describe('Verify that the `auth/me` path responds correctly', () => {
 
   beforeAll(() => {
     app = express();
-    const greenAuthServer = new GreenAuthServer({secret: 'secret'});
+    const config: IConfig<{ uid: string | number }> = {
+      secret: 'secret',
+      encode: (auth, next) => {
+        return next(null, {uid: auth.uid});
+      },
+      decode: (token, next) => {
+        return next(null, {uid: token.uid, user: undefined});
+      },
+    };
+    const greenAuthServer = new GreenAuthServer(config);
     app.use(greenAuthServer.initialize());
   });
 

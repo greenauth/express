@@ -20,8 +20,11 @@ function isProtected(
         req.headers.authorization.split(' ')[1],
         GreenAuthServer._secret,
     );
-    req.auth = {token};
-    return next();
+    return GreenAuthServer.default.decode(token, (error, auth) => {
+      if (error) return res.status(500).send(error);
+      req.auth = auth;
+      return next();
+    });
   } catch (error) {
     return res.sendStatus(401);
   }
