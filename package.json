@@ -8,7 +8,7 @@
     "build": "rimraf lib && tsc -p tsconfig.build.json",
     "release": "semantic-release",
     "check-types": "tsc --noemit",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**/*.ts"
   },
   "repository": {
     "type": "git",
