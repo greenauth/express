@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/greenauth/express/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2021-01-03)
+
+
+### Features
+
+* **isprotected:** implement encode and decode methods ([7c5b8d7](https://github.com/greenauth/express/commit/7c5b8d7694619b0d28f236093add1c354326761e))
+
 # [1.0.0-beta.4](https://github.com/greenauth/express/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2021-01-02)
 
 
