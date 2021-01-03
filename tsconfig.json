@@ -1,5 +1,4 @@
 {
-  "include": ["**/*"],
   "exclude": ["node_modules", "lib"],
   "compileOnSave": false,
   "compilerOptions": {
@@ -15,7 +14,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "lib": ["es6", "es7"]
   }
 }

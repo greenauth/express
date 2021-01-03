@@ -1,10 +1,10 @@
 import request from 'supertest';
-import express, {Application} from 'express';
+import express from 'express';
 import jwt from 'jsonwebtoken';
 import GreenAuthServer from '../src/index';
 
 describe('Verify that the `auth/me` path responds correctly', () => {
-  let app: Application;
+  let app: any;
   const token = `Bearer ${jwt.sign({uid: 1}, 'secret')}`;
 
   beforeAll(() => {
